@@ -1,0 +1,87 @@
+<view class='buy'bindtap="changeOption">
+<view class="weui-loadmore" wx:if='{{isRefreshing}}'>
+  <view class="weui-loading"></view>
+  <view class="weui-loadmore-tips">正在刷新...</view>
+</view>
+
+    <view class='nav'>
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+        <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">国股</view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">城商</view>
+        <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">农商</view>
+    </scroll-view>                 
+    </view>
+    <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+     style="height:{{winHeight}}rpx">
+        <swiper-item wx:for="{{3}}">
+            <scroll-view scroll-y="true" class="scoll-h" bindscrolltolower="bindDownLoad" scroll-top="{{scrollTop}}"style="height:{{scrollHeight}}px;">
+              <view class="tr bgf4">
+                <view class="th priceBox">
+
+                 <view class='select' catchtap='selectTapdate'>
+        <text class='select_text'>到期</text>
+    </view>
+    <view class='option_box' style='height:{{show2?(selectData3.length>5?300:selectData.length*60):0}}rpx;'>
+        <text class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData3}}' wx:key='this' data-index='{{index}}' catchtap='optionTapdate'>{{item}}</text>
+    </view>
+                </view>
+                <view class="th">银行</view>
+                <view class="th priceBox">
+                   <view class='select' catchtap='selectTapvalue'>
+        <text class='select_text'>金额(万)</text>
+    </view>
+    <view class='option_box' style='height:{{show1?(selectData2.length>5?300:selectData.length*60):0}}rpx;'>
+        <text class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData2}}' wx:key='this' data-index='{{index}}' catchtap='optionTapvalue'>{{item}}</text>
+    </view>
+                
+                </view>
+                <view class="th priceBox"><view class='select' catchtap='selectTapprice'>
+        <text class='select_text'>价格(元)</text>
+    </view>
+    <view class='option_box' style='height:{{show?(selectData.length>5?300:selectData.length*60):0}}rpx;'>
+        <text class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTapprice'>{{item}}</text>
+    </view></view>
+                <view class="th">时间</view>
+              </view>
+               <view class="tr"wx:for="{{list}}" wx:for-index="index" wx:for-item="item" data-index='{{index}}' style='{{index%2==1?"background-color:#f4f4f4;":""}}' bindtap='showmodel'>
+            <view class="td">{{item.expireYear}}</view>
+            <view class="td">{{item.accOrgCat}}</view>
+            <view class="td">{{item.value}}</view>
+            <view class="td f76">{{item.price}}</view>
+            <view class="td">{{item.createTime}}</view>
+          </view>
+    
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+    <!-- ---------------------------------------弹窗 ------------------------------------------------------------------>
+<!-- <modal bindtap="cancel" class="model" hidden="{{hidden}}" confirm-text="" cancel-text="" catchtouchmove='{{true}}'>
+  <view class='box'bindtap="hidd" >
+    <image class='img_touxiang' src="../assets/images/tx.png"></image>
+    <p class="p1">{{data.nickName}}</p>
+    <p class="p2">{{data.prov}} {{data.city}}</p>
+    <p class="p3">{{data.phone}}</p>
+    <view class='btn' bindtap='call'>联系他</view>
+  </view>
+</modal> -->
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+  <view class="zan-dialog__container">
+    <view>
+       <view class='box'bindtap="hidd" >
+    <image class='img_touxiang' src="../assets/images/tx.png"></image>
+    <p class="p1">{{data.nickName}}</p>
+    <p class="p2">{{data.prov}} {{data.city}}</p>
+    <p class="p3">{{data.phone}}</p>
+    <view class='btn' bindtap='call'>联系他</view>
+  </view>
+    
+    
+    </view>
+  </view>
+</view>
+<!--  ------------------------------------------------------------------------------------------------------------->
+
+</view>
+
+

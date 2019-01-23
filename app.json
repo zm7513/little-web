@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/buy/buy",
+    "pages/sale/sale",
+    "pages/index/index"
+  ],
+  "tabBar": {
+    "color": "#AAA",
+    "selectedColor": "#EA2826",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/buy/buy",
+        "text": "买入",
+        "iconPath": "./pages/assets/images/buy.png",
+        "selectedIconPath": "./pages/assets/images/buy1.png"
+      },
+      {
+        "pagePath": "pages/sale/sale",
+        "text": "卖出",
+        "iconPath": "./pages/assets/images/sale.png",
+        "selectedIconPath": "./pages/assets/images/sale1.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "电票库存",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  }
+}
